@@ -17,7 +17,10 @@ def get_file_value(ch: str):
     for line in file.readlines():
         temp = []
         for val in line.split(','):
-            temp.append(float(val))
+            try:
+                temp.append(float(val))
+            except:
+                temp.append(val)
         ans.append(temp)
     return ans
 

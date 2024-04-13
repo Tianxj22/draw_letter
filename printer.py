@@ -5,6 +5,8 @@
 import pyautogui
 from time import sleep
 from source_dealer import *
+from numpy import pi, sin, cos
+from Painter import *
 
 # 符号大小
 char_width = 30
@@ -22,18 +24,25 @@ def cnt_down(sec: int):
 
 def draw_single_char(ch: str):
     '''绘制单个字符'''
-    points = get_file_value(ch)
-    pyautogui.moveRel(points[0][0] * char_width, points[0][1] * char_height)
-    cur_pos = points[0]
-    pyautogui.mouseDown()
-    for point in points[1:]:
-        pyautogui.moveRel((point[0] - cur_pos[0]) * char_width, (point[1] - cur_pos[1]) * char_height)
-        cur_pos = point
-    pyautogui.mouseUp()
+    requires = get_file_value(ch)
+    tl_point = pyautogui.position()
+    for require in requires:
+        if require[0] == 'e':
+            draw_ellipse([tl_point[0] + char_width * require[1], tl_point[1] + char_height * require[2]], 
+                         require[3] * char_width, require[4] * char_height, require[5])
+        elif require[0] == 'l':
+            draw_line([tl_point[0] + char_width * require[1], tl_point[1] + char_height * require[2]], 
+                      [tl_point[0] + char_width * require[3], tl_point[1] + char_height * require[4]])
+        elif require[0] == 'p':
+            draw_pie([tl_point[0] + char_width * require[1], tl_point[1] + char_height * require[2]], 
+                        require[3] * char_width, require[4] * char_height, require[5], require[6], require[7])
+            
 
 #——————————————————————————————————————————————————————————#
 
-cnt_down(5)
+cnt_down(3)
+
+# draw_single_char('2')
 
 output_str = '0123456789'
 for ch in output_str:
