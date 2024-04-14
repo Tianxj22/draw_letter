@@ -44,7 +44,7 @@ cnt_down(3)
 
 # draw_single_char('2')
 
-output_str = '0123456789'
+output_str = 'POCKETMON'
 for ch in output_str:
     start_x, start_y = pyautogui.position()
     draw_single_char(ch)
