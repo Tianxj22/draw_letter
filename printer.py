@@ -9,7 +9,7 @@ from numpy import pi, sin, cos
 from Painter import *
 
 # 符号大小
-char_width = 30
+char_width = 60 * 0.618
 char_height = 60
 
 #——————————————————————————————————————————————————————————#
