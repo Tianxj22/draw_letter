@@ -38,7 +38,6 @@ def draw_pie(center_point: list, a: float, b: float, start_theta: float,
     if start_theta > end_theta:
         start_theta, end_theta = end_theta, start_theta
     theta = start_theta
-    print(end_theta, start_theta, point_nums)
     theta_step = (end_theta - start_theta) / point_nums
     pyautogui.moveTo(center_point[0] + a * cos(theta), center_point[1] + b * sin(theta))
     pyautogui.mouseDown()
